@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: 'https://github.com/Prashantji007/MicrotodoUI'
     targetRevision: main
-    path: /Helm/UI-Task/templates
+    path: /Helm/UI-Task
 
     helm:
       valueFiles:
