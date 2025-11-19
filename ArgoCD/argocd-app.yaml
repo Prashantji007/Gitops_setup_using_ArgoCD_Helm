@@ -4,8 +4,8 @@ metadata:
   name: ui-app
   namespace: argocd
 spec:
-  project: ui-project
-
+  project: todo-project
+  
   source:
     repoURL: 'https://github.com/Prashantji007/Gitops_setup_using_ArgoCD_Helm'
     targetRevision: main
