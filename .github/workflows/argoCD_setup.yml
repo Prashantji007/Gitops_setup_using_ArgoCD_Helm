@@ -22,11 +22,11 @@ jobs:
         uses: Amadevus/pwsh-script@v2.0.3
         with:
           script: 
-            kubectl apply -f argocd-project.yaml
+            kubectl apply -f ArgoCD/argocd-project.yaml
 
       - name: PowerShell script to create application
         uses: Amadevus/pwsh-script@v2.0.3
         with:
           script: 
-            kubectl apply -f argocd-app.yaml
+            kubectl apply -f ArgoCD/argocd-app.yaml
                  
