@@ -2,6 +2,9 @@ name: ArgoCD setup
 
 on: workflow_dispatch
 
+permissions:
+  id-token: write
+  contents: read
 
 env:
   RESOURCE_GROUP: rg-todoapp-dev
