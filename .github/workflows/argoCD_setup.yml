@@ -2,30 +2,52 @@ name: ArgoCD setup
 
 on: workflow_dispatch
 
+
+env:
+  RESOURCE_GROUP: rg-todoapp-dev
+  CLUSTER_NAME: aks-todoapp-dev01
+
 jobs:
   setup-adgocd:
-    runs-on: raja:rana
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
+        # 🔹 1. Azure Login (OIDC)
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+  
+      # 🔹 2. Get AKS Credentials
+      - name: Get AKS Credentials
+        run: |
+          az aks get-credentials \
+            --resource-group $RESOURCE_GROUP \
+            --name $CLUSTER_NAME \
+            --overwrite-existing
+
         
         
-      - name: PowerShell script to install argocd
-        uses: Amadevus/pwsh-script@v2.0.3
+      - name: Bash script to install argocd
+        uses: rethab/bash-action@8d1f7b182b1a1b00759f7ae1b67d5afb2a3494e9
         with:
           script: 
             kubectl create namespace argocd
             kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
-      - name: PowerShell script to create project
-        uses: Amadevus/pwsh-script@v2.0.3
+      - name: Bash script to create project
+        uses: rethab/bash-action@8d1f7b182b1a1b00759f7ae1b67d5afb2a3494e9
         with:
           script: 
             kubectl apply -f ArgoCD/argocd-project.yaml
 
-      - name: PowerShell script to create application
-        uses: Amadevus/pwsh-script@v2.0.3
+      - name: Bash script to create application
+        uses: rethab/bash-action@8d1f7b182b1a1b00759f7ae1b67d5afb2a3494e9
         with:
           script: 
             kubectl apply -f ArgoCD/argocd-app.yaml
