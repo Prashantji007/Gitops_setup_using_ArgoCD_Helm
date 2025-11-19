@@ -7,9 +7,9 @@ spec:
   project: todo-project
   
   source:
-    repoURL: 'https://github.com/Prashantji007/Gitops_setup_using_ArgoCD_Helm'
+    repoURL: 'https://github.com/Prashantji007/MicrotodoUI'
     targetRevision: main
-    path: Helm/UI-Task/templates
+    path: MicrotodoUI/Helm/UI-Task/templates
 
     helm:
       valueFiles:
