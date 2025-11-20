@@ -7,8 +7,8 @@ spec:
   project: todo-project
   
   source:
-    repoURL: 'oci://acrtodoappdev01.azurecr.io/helm'
-    chart: UI-Task
+    repoURL: oci://acrtodoappdev01.azurecr.io/helm
+    chart: todo-ui-chart
     targetRevision: 1.0.*
 
     helm:
@@ -37,8 +37,8 @@ spec:
   project: todo-project
   
   source:
-    repoURL: 'oci://acrtodoappdev01.azurecr.io/helm'
-    chart: Add-Task
+    repoURL: oci://acrtodoappdev01.azurecr.io/helm
+    chart: add-task-chart
     targetRevision: 1.0.*
 
     helm:
@@ -67,8 +67,8 @@ spec:
   project: todo-project
   
   source:
-    repoURL: 'oci://acrtodoappdev01.azurecr.io/helm'
-    chart: Delete-Task
+    repoURL: oci://acrtodoappdev01.azurecr.io/helm
+    chart: delete-task-chart
     targetRevision: 1.0.*
 
     helm:
@@ -95,8 +95,8 @@ spec:
   project: todo-project
   
   source:
-    repoURL: 'oci://acrtodoappdev01.azurecr.io/helm'
-    chart: Get-Task
+    repoURL: oci://acrtodoappdev01.azurecr.io/helm
+    chart: get-task-chart
     targetRevision: 1.0.*
 
     helm:
