@@ -7,9 +7,9 @@ spec:
   project: todo-project
   
   source:
-    repoURL: 'https://github.com/Prashantji007/MicrotodoUI'
-    targetRevision: main
-    path: Helm/UI-Task
+    repoURL: 'oci://acrtodoappdev01.azurecr.io/helm'
+    chart: UI-Task
+    targetRevision: 1.0.*
 
     helm:
       valueFiles:
@@ -37,9 +37,9 @@ spec:
   project: todo-project
   
   source:
-    repoURL: 'https://github.com/Prashantji007/AddTaskTodoMicroservice'
-    targetRevision: main
-    path: Helm/Add-Task
+    repoURL: 'oci://acrtodoappdev01.azurecr.io/helm'
+    chart: Add-Task
+    targetRevision: 1.0.*
 
     helm:
       valueFiles:
@@ -67,9 +67,9 @@ spec:
   project: todo-project
   
   source:
-    repoURL: 'https://github.com/Prashantji007/DeleteTaskTodoMicroservice'
-    targetRevision: main
-    path: Helm/Delete-Task
+    repoURL: 'oci://acrtodoappdev01.azurecr.io/helm'
+    chart: Delete-Task
+    targetRevision: 1.0.*
 
     helm:
       valueFiles:
@@ -95,9 +95,9 @@ spec:
   project: todo-project
   
   source:
-    repoURL: 'https://github.com/Prashantji007/GetTasksTodoMicroservice'
-    targetRevision: main
-    path: Helm/Get-Task
+    repoURL: 'oci://acrtodoappdev01.azurecr.io/helm'
+    chart: Get-Task
+    targetRevision: 1.0.*
 
     helm:
       valueFiles:
