@@ -25,3 +25,92 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: add-task-app
+  namespace: argocd
+spec:
+  project: todo-project
+  
+  source:
+    repoURL: 'https://github.com/Prashantji007/AddTaskTodoMicroservice'
+    targetRevision: main
+    path: Helm/Add-Task
+
+    helm:
+      valueFiles:
+        - dev-values.yaml   # <-- tumhara values file yahi hai
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: app
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: delete-task-app
+  namespace: argocd
+spec:
+  project: todo-project
+  
+  source:
+    repoURL: 'https://github.com/Prashantji007/DeleteTaskTodoMicroservice'
+    targetRevision: main
+    path: Helm/Delete-Task
+
+    helm:
+      valueFiles:
+        - dev-values.yaml   # <-- tumhara values file yahi hai
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: app
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: get-task-app
+  namespace: argocd
+spec:
+  project: todo-project
+  
+  source:
+    repoURL: 'https://github.com/Prashantji007/GetTasksTodoMicroservice'
+    targetRevision: main
+    path: Helm/Get-Task
+
+    helm:
+      valueFiles:
+        - dev-values.yaml   # <-- tumhara values file yahi hai
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: app
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+
