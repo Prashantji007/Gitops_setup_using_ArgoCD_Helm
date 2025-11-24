@@ -1,0 +1,34 @@
+common:
+  acr_server_name: acrtodoappdev01.azurecr.io
+  ingressClassName: nginx
+
+microui:
+  image: microtodoui
+  tag: latest
+  replicas: 1
+  port: 80
+  serviceport: 80
+
+
+get_task:
+  image: microtodogettask
+  tag: latest
+  replicas: 1
+  port: 8000
+  serviceport: 80
+
+
+delete_task:
+  image: microtododeletetask
+  tag: latest
+  replicas: 1
+  port: 8000
+  serviceport: 80
+
+
+add_task:
+  image: microtodoaddtask
+  tag: latest
+  replicas: 1
+  port: 8000
+  serviceport: 80

@@ -11,7 +11,7 @@ spec:
   
   source:
     repoURL: https://github.com/Prashantji007/MicrotodoUI
-    path: Helm/todo-ui-chart
+    path: Helm
     targetRevision: main
     helm:
       valueFiles:
@@ -43,7 +43,7 @@ spec:
   
   source:
     repoURL: https://github.com/Prashantji007/AddTaskTodoMicroservice
-    path: Helm/add-task-chart
+    path: Helm
     targetRevision: main
     helm:
       valueFiles:
@@ -75,7 +75,7 @@ spec:
   
   source:
     repoURL: https://github.com/Prashantji007/DeleteTaskTodoMicroservice
-    path: Helm/delete-task-chart
+    path: Helm
     targetRevision: main
     helm:
       valueFiles:
@@ -107,7 +107,7 @@ spec:
   
   source:
     repoURL: https://github.com/Prashantji007/GetTasksTodoMicroservice
-    path: Helm/get-task-chart
+    path: Helm
     targetRevision: main
     helm:
       valueFiles:

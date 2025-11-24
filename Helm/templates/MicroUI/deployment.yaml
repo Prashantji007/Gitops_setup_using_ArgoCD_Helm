@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-todo-ui
+  namespace: app
+spec:
+  replicas: {{ .Values.microui.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-todo-ui
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-todo-ui
+    spec:
+      containers:
+      - name: {{ .Release.Name }}-todo-ui
+        image: {{ .Values.common.acr_server_name }}/{{.Values.microui.image}}:{{.Values.microui.tag}}
+        #imagePullPolicy: Always
+        ports:
+        - containerPort: {{ .Values.microui.port }}
+      # imagePullSecrets:
+      #   - name: acr-creds

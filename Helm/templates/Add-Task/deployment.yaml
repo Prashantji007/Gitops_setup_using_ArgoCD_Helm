@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Release.Name}}-add-task
+  namespace: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{.Release.Name}}-add-task
+  template:
+    metadata:
+      labels:
+        app: {{.Release.Name}}-add-task
+    spec:
+      containers:
+      - name: {{.Release.Name}}-add-task
+        image: {{ .Values.common.acr_server_name }}{{.Values.add_task.image}}:{{.Values.add_task.tag}}
+        #imagePullPolicy: Always
+        ports:
+        - containerPort: {{ .Values.add_task.port }}
+      # imagePullSecrets:
+      #   - name: acr-creds

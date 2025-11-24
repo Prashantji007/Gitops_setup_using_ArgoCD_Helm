@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{.Release.Name}}-delete-task-ingress
+  namespace: app
+spec:
+  ingressClassName: {{ .Values.common.ingressClassName }}
+  rules:
+  - http:
+      paths:
+      - pathType: Prefix
+        path: "/delete-task"
+        backend:
+          service:
+            name: {{.Release.Name}}-delete-task-svc
+            port: 
+              number: {{ .Values.delete_task.serviceport }}
+

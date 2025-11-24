@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Release.Name}}-delete-task
+  namespace: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{.Release.Name}}-delete-task
+  template:
+    metadata:
+      labels:
+        app: {{.Release.Name}}-delete-task
+    spec:
+      containers:
+      - name: {{.Release.Name}}-delete-task
+        image: {{ .Values.common.acr_server_name }}/{{.Values.delete_task.image}}:{{.Values.delete_task.tag}}
+        #imagePullPolicy: Always
+        ports:
+        - containerPort: {{ .Values.delete_task.port }}
+      # imagePullSecrets:
+      #   - name: acr-creds
