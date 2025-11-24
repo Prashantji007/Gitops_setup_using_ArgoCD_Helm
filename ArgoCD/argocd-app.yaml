@@ -10,7 +10,7 @@ spec:
   project: todo-project
   
   source:
-    repoURL: https://github.com/Prashantji007/MicrotodoUI
+    repoURL: https://github.com/Prashantji007/Gitops_setup_using_ArgoCD_Helm
     path: Helm
     targetRevision: main
     helm:
