@@ -48,10 +48,3 @@ jobs:
       - name: Create Application
         run: |
             kubectl apply -f ArgoCD/argocd-app.yaml
-
-
-      - name: Apply ArgoCD repo secret
-        run: |
-          kubectl apply --dry-run=client -f ArgoCD/acr-helm-repo-secret.yaml -n argocd
-          kubectl apply -f ArgoCD/acr-helm-repo-secret.yaml -n argocd
-                      
