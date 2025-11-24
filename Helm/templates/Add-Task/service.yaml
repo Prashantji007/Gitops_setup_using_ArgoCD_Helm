@@ -9,4 +9,4 @@ spec:
     app: {{.Release.Name}}-add-task
   ports:
   - port: {{ .Values.add_task.serviceport }}
-    targetPort: {{ .Values.common.port }}
+    targetPort: {{ .Values.add_task.port }}
