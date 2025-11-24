@@ -16,8 +16,8 @@ spec:
       containers:
       - name: {{.Release.Name}}-delete-task
         image: {{ .Values.common.acr_server_name }}/{{.Values.delete_task.image}}:{{.Values.delete_task.tag}}
-        #imagePullPolicy: Always
+        imagePullPolicy: Always
         ports:
         - containerPort: {{ .Values.delete_task.port }}
-      # imagePullSecrets:
-      #   - name: acr-creds
+      imagePullSecrets:
+        - name: acr-creds

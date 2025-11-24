@@ -16,8 +16,8 @@ spec:
       containers:
       - name: {{.Release.Name}}-add-task
         image: {{ .Values.common.acr_server_name }}{{.Values.add_task.image}}:{{.Values.add_task.tag}}
-        #imagePullPolicy: Always
+        imagePullPolicy: Always
         ports:
         - containerPort: {{ .Values.add_task.port }}
-      # imagePullSecrets:
-      #   - name: acr-creds
+      imagePullSecrets:
+        - name: acr-creds
