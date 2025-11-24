@@ -1,10 +1,10 @@
 # ---------------------------------------------------------
-# UI APP
+# todo APP
 # ---------------------------------------------------------
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ui-app
+  name: todo-app
   namespace: argocd
 spec:
   project: todo-project
@@ -29,97 +29,3 @@ spec:
       - CreateNamespace=true
 
 
----
-# ---------------------------------------------------------
-# ADD TASK APP
-# ---------------------------------------------------------
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: add-task-app
-  namespace: argocd
-spec:
-  project: todo-project
-  
-  source:
-    repoURL: https://github.com/Prashantji007/Gitops_setup_using_ArgoCD_Helm
-    path: Helm
-    targetRevision: main
-    helm:
-      valueFiles:
-        - dev-values.yaml
-
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: app
-
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
-
-
----
-# ---------------------------------------------------------
-# DELETE TASK APP
-# ---------------------------------------------------------
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: delete-task-app
-  namespace: argocd
-spec:
-  project: todo-project
-  
-  source:
-    repoURL: https://github.com/Prashantji007/Gitops_setup_using_ArgoCD_Helm
-    path: Helm
-    targetRevision: main
-    helm:
-      valueFiles:
-        - dev-values.yaml
-
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: app
-
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
-
-
----
-# ---------------------------------------------------------
-# GET TASK APP
-# ---------------------------------------------------------
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: get-task-app
-  namespace: argocd
-spec:
-  project: todo-project
-  
-  source:
-    repoURL: https://github.com/Prashantji007/Gitops_setup_using_ArgoCD_Helm
-    path: Helm
-    targetRevision: main
-    helm:
-      valueFiles:
-        - dev-values.yaml
-
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: app
-
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
