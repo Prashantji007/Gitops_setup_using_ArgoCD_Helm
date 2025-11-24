@@ -12,6 +12,6 @@ spec:
         path: "/get-task"
         backend:
           service:
-            name: {{.Release.Name}}-todo-ui
+            name: {{.Release.Name}}-todo-ui-svc
             port: 
               number: {{ .Values.get_task.serviceport }}
