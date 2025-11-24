@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{.Release.Name}}-todo-ui-ingress
+  name: {{.Release.Name}}-get-task-ingress
   namespace: app
 spec:
   ingressClassName: {{ .Values.common.ingressClassName }}
