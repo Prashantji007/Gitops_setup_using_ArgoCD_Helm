@@ -1,23 +1,20 @@
-  apiVersion: apps/v1
-  kind: Deployment
-  metadata:
-    name: {{.Release.Name}}-todo-get-task
-    namespace: app
-  spec:
-    replicas: 1
-    selector:
-      matchLabels:
-        app: {{.Release.Name}}-get-task
-    template:
-      metadata:
-        labels:
-          app: {{.Release.Name}}-get-task
-      spec:
-        containers:
-        - name: {{.Release.Name}}-get-task
-          image: {{.Values.common.acr_server_name}}/{{ .Values.get_task.image }}:{{ .Values.get_task.tag }}
-        # imagePullPolicy: Always
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-todo-get-task
+  namespace: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-get-task
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-get-task
+    spec:
+      containers:
+        - name: {{ .Release.Name }}-get-task
+          image: "{{ .Values.common.acr_server_name }}/{{ .Values.get_task.image }}:{{ .Values.get_task.tag }}"
           ports:
-          - containerPort: {{ .Values.get_task.port}}
-        # imagePullSecrets:
-        #   - name: acr-creds 
+            - containerPort: {{ .Values.get_task.port }}
