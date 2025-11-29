@@ -14,13 +14,14 @@ spec:
         app: {{ .Release.Name }}-get-task
     spec:
       containers:
-      - name: {{ .Release.Name }}-get-task
-        image: "{{ .Values.common.acr_server_name }}/{{ .Values.get_task.image }}:{{ .Values.get_task.tag }}"
-        imagePullPolicy: Always
-        ports:
-        - containerPort: {{ .Values.get_task.port }}
-        env:
-          - name: CONNECTION_STRING
-            value: "{{ .Values.common.connection_string }}"
+        - name: {{ .Release.Name }}-get-task
+          image: "{{ .Values.common.acr_server_name }}/{{ .Values.get_task.image }}:{{ .Values.get_task.tag }}"
+          imagePullPolicy: Always
+          ports:
+            - containerPort: {{ .Values.get_task.port }}
+          env:
+            - name: CONNECTION_STRING
+              value: "{{ .Values.common.connection_string }}"
+      
       imagePullSecrets:
-      - name: acr-creds
+        - name: acr-creds
