@@ -14,10 +14,11 @@ spec:
         app: {{ .Release.Name }}-todo-ui
     spec:
       containers:
-      - name: {{ .Release.Name }}-todo-ui
-        image: {{ .Values.common.acr_server_name }}/{{.Values.microui.image}}:{{.Values.microui.tag}}
-        imagePullPolicy: Always
-        ports:
-        - containerPort: {{ .Values.microui.port }}
+        - name: {{ .Release.Name }}-todo-ui
+          image: "{{ .Values.common.acr_server_name }}/{{ .Values.microui.image }}:{{ .Values.microui.tag }}"
+          imagePullPolicy: Always
+          ports:
+            - containerPort: {{ .Values.microui.port }}
+
       imagePullSecrets:
         - name: acr-creds
