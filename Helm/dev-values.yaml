@@ -1,6 +1,7 @@
 common:
   acr_server_name: acrtodoappdev01.azurecr.io
   ingressClassName: nginx
+  connection_string: "Driver={ODBC Driver 18 for SQL Server};Server=tcp:mssqldbserverdev.database.windows.net,1433;Database=sqldbdev;Uid=sqladminuser;Pwd=Test@12345;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;"
 
 microui:
   image: microtodoui

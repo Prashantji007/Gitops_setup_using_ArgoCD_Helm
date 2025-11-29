@@ -19,6 +19,8 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: {{ .Values.get_task.port }}
-
+        env:
+          - name: CONNECTION_STRING
+            value: "{{ .Values.common.connection_string }}"
       imagePullSecrets:
       - name: acr-creds
