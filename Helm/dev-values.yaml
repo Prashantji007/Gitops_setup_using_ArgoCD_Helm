@@ -13,7 +13,7 @@ microui:
 
 get_task:
   image: microtodogettask
-  get-tag: 26
+  gettag: 26
   replicas: 1
   port: 8000
   serviceport: 80
@@ -21,7 +21,7 @@ get_task:
 
 delete_task:
   image: microtododeletetask
-  delete-tag: 23
+  deletetag: 23
   replicas: 1
   port: 8000
   serviceport: 80
@@ -29,7 +29,7 @@ delete_task:
 
 add_task:
   image: microtodoaddtask
-  add-tag: 30
+  addtag: 30
   replicas: 1
   port: 8000
   serviceport: 80
