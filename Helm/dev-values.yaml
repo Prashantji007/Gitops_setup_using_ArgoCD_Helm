@@ -5,7 +5,7 @@ common:
 
 microui:
   image: microtodoui
-  uitag: 40
+  uitag: 41
   replicas: 1
   port: 80
   serviceport: 80
