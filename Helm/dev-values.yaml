@@ -29,7 +29,7 @@ delete_task:
 
 add_task:
   image: microtodoaddtask
-  add-tag: latest
+  add-tag: 30
   replicas: 1
   port: 8000
   serviceport: 80
