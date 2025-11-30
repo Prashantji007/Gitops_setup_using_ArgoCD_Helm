@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: {{ .Release.Name }}-delete-task
-          image: "{{ .Values.common.acr_server_name }}/{{ .Values.delete_task.image }}:{{ .Values.delete_task.tag }}"
+          image: "{{ .Values.common.acr_server_name }}/{{ .Values.delete_task.image }}:{{ .Values.delete_task.delete-tag }}"
           imagePullPolicy: Always
           ports:
             - containerPort: {{ .Values.delete_task.port }}

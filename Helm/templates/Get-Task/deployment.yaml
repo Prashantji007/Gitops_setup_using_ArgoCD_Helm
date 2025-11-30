@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: {{ .Release.Name }}-get-task
-          image: "{{ .Values.common.acr_server_name }}/{{ .Values.get_task.image }}:{{ .Values.get_task.tag }}"
+          image: "{{ .Values.common.acr_server_name }}/{{ .Values.get_task.image }}:{{ .Values.get_task.get-tag }}"
           imagePullPolicy: Always
           ports:
             - containerPort: {{ .Values.get_task.port }}
