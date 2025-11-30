@@ -13,7 +13,7 @@ microui:
 
 get_task:
   image: microtodogettask
-  gettag: 26
+  gettag: 27
   replicas: 1
   port: 8000
   serviceport: 80
