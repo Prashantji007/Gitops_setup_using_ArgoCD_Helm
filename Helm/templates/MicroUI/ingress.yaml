@@ -3,15 +3,13 @@ kind: Ingress
 metadata:
   name: {{ .Release.Name }}-todo-ui-ingress
   namespace: app
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   ingressClassName: {{ .Values.common.ingressClassName }}
   rules:
   - http:
       paths:
-      - pathType: ImplementationSpecific
-        path: "/ui(/|$)(.*)"
+      - pathType: prefix
+        path: "/"
         backend:
           service:
             name: {{ .Release.Name }}-todo-ui-svc
