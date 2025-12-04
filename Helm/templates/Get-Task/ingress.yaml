@@ -10,7 +10,7 @@ spec:
   rules:
   - http:
       paths:
-      - pathType: Prefix
+      - pathType: PreImplementationSpecificfix
         path: "/get-task(/|$)(.*)"
         backend:
           service:

@@ -10,7 +10,7 @@ spec:
   rules:
   - http:
       paths:
-      - pathType: Prefix
+      - pathType: ImplementationSpecific
         path: "/delete-task(/|$)(.*)"
         backend:
           service:
