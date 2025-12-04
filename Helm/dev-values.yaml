@@ -21,7 +21,7 @@ get_task:
 
 delete_task:
   image: microtododeletetask
-  deletetag: 25
+  deletetag: 27
   replicas: 1
   port: 8000
   serviceport: 80
