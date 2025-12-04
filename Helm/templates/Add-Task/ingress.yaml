@@ -3,6 +3,8 @@ kind: Ingress
 metadata:
   name: {{.Release.Name}}-add-task-ingress
   namespace: app
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: {{ .Values.common.ingressClassName }}
   rules:
