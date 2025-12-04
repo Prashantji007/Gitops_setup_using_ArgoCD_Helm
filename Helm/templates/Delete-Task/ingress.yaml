@@ -9,7 +9,7 @@ spec:
   - http:
       paths:
       - pathType: Prefix
-        path: "/delete-task"
+        path: "/delete-task(/|$)(.*)"
         backend:
           service:
             name: {{.Release.Name}}-delete-task-svc

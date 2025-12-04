@@ -9,7 +9,7 @@ spec:
   - http:
       paths:
       - pathType: Prefix
-        path: "/add-task"
+        path: "/add-task(/|$)(.*)"
         backend:
           service:
             name: {{.Release.Name}}-add-task-svc
