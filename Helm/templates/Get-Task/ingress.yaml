@@ -1,17 +1,38 @@
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: {{.Release.Name}}-get-task-ingress
+#   namespace: app
+#   annotations:
+#     nginx.ingress.kubernetes.io/rewrite-target: /$2
+# spec:
+#   ingressClassName: {{ .Values.common.ingressClassName }}
+#   rules:
+#   - http:
+#       paths:
+#       - pathType: ImplementationSpecific
+#         path: "/get-task(/|$)(.*)"
+#         backend:
+#           service:
+#             name: {{ .Release.Name }}-get-task-svc
+#             port:
+#               number: {{ .Values.get_task.serviceport }}
+
+
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{.Release.Name}}-get-task-ingress
+  name: {{ .Release.Name }}-get-task-ingress
   namespace: app
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    appgw.ingress.kubernetes.io/backend-path-prefix: /
 spec:
   ingressClassName: {{ .Values.common.ingressClassName }}
   rules:
   - http:
       paths:
-      - pathType: ImplementationSpecific
-        path: "/get-task(/|$)(.*)"
+      - pathType: Prefix
+        path: /get-task
         backend:
           service:
             name: {{ .Release.Name }}-get-task-svc
