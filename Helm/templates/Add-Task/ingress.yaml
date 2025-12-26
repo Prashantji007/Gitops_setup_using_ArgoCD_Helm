@@ -1,19 +1,41 @@
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: {{.Release.Name}}-add-task-ingress
+#   namespace: app
+#   annotations:
+#     nginx.ingress.kubernetes.io/rewrite-target: /$2
+# spec:
+#   ingressClassName: {{ .Values.common.ingressClassName }}
+#   rules:
+#   - http:
+#       paths:
+#       - pathType: ImplementationSpecific
+#         path: "/add-task(/|$)(.*)"
+#         backend:
+#           service:
+#             name: {{.Release.Name}}-add-task-svc
+#             port: 
+#               number: {{ .Values.add_task.serviceport }}
+
+
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{.Release.Name}}-add-task-ingress
+  name: {{ .Release.Name }}-add-task-ingress
   namespace: app
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    appgw.ingress.kubernetes.io/backend-path-prefix: /
 spec:
   ingressClassName: {{ .Values.common.ingressClassName }}
   rules:
   - http:
       paths:
-      - pathType: ImplementationSpecific
-        path: "/add-task(/|$)(.*)"
+      - pathType: Prefix
+        path: /add-task
         backend:
           service:
-            name: {{.Release.Name}}-add-task-svc
-            port: 
+            name: {{ .Release.Name }}-add-task-svc
+            port:
               number: {{ .Values.add_task.serviceport }}
+
