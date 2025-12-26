@@ -1,20 +1,40 @@
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: {{.Release.Name}}-delete-task-ingress
+#   namespace: app
+#   annotations:
+#     nginx.ingress.kubernetes.io/rewrite-target: /$2
+# spec:
+#   ingressClassName: {{ .Values.common.ingressClassName }}
+#   rules:
+#   - http:
+#       paths:
+#       - pathType: ImplementationSpecific
+#         path: "/delete-task(/|$)(.*)"
+#         backend:
+#           service:
+#             name: {{.Release.Name}}-delete-task-svc
+#             port: 
+#               number: {{ .Values.delete_task.serviceport }}
+
+
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{.Release.Name}}-delete-task-ingress
+  name: {{ .Release.Name }}-delete-task-ingress
   namespace: app
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    appgw.ingress.kubernetes.io/backend-path-prefix: /
 spec:
   ingressClassName: {{ .Values.common.ingressClassName }}
   rules:
   - http:
       paths:
-      - pathType: ImplementationSpecific
-        path: "/delete-task(/|$)(.*)"
+      - pathType: Prefix
+        path: /delete-task
         backend:
           service:
-            name: {{.Release.Name}}-delete-task-svc
-            port: 
+            name: {{ .Release.Name }}-delete-task-svc
+            port:
               number: {{ .Values.delete_task.serviceport }}
-
